@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="picoCSS/css/pico.min.css" />
+    <link rel="stylesheet" href="./static/custom.css" />
+    <title>dev - PBN</title>
+  </head>
+
+  <body>
+    <nav class="container-fluid">
+      <ul>
+        <li>
+          <a href="./" class="contrast"><strong>PBN</strong></a>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <details role="list" dir="rtl">
+            <summary aria-haspopup="listbox" role="link" class="contrast">
+              &#9776;
+            </summary>
+            <ul role="listbox">
+              <!-- <li><a href="link to the site">button name</a></li> -->
+              <li><a href="./">Главная страница</a></li>
+              <li><a href="./unloginedTasks.html">Задачи</a></li>
+              <li><a href="./signup.html">Регистрация</a></li>
+              <li><a href="./login.html">Вход</a></li>
+            </ul>
+          </details>
+        </li>
+      </ul>
+    </nav>
+    <article>
+      <h1 style="margin-bottom: 1rem">
+        <kbd>
+          <span id="lastname">Знай</span> <span id="name">Артемий</span>
+        </kbd>
+      </h1>
+      <small>
+        Email:
+        <u>
+          <span id="email"></span>
+        </u>
+        login:
+        <u><span id="login"></span></u>
+      </small>
+      <p>
+        <u><span id="accountType">*Исполнитель*</span></u>
+      </p>
+    </article>
+    <header class="container-fluid">
+      <details>
+        <summary>Текущие задачи</summary>
+        <article>
+          <h3>
+            <span id="span__description"> *Краткое описание задачи*</span>
+          </h3>
+          <h6>
+            Статус: <span id="span__status"></span>
+            <details role="list">
+              <summary aria-haspopup="listbox">Установить статус</summary>
+              <ul role="listbox">
+                <li><a>зарегистрирована</a></li>
+                <li><a>ожидает распределения</a></li>
+                <li><a>принята в работу</a></li>
+                <li><a>ожидает поставку</a></li>
+                <li><a>выполнена</a></li>
+              </ul>
+            </details>
+          </h6>
+          <h6>
+            Ориентировочный срок выполнения: <span id="span__deadline"></span>
+          </h6>
+          <h6>id: <span id="span__taskid"></span></h6>
+        </article>
+      </details>
+      <details>
+        <summary>Архивные задачи</summary>
+        <article>
+          <h3>*Краткое описание задачи*</h3>
+          <h6>Статус: <span id="status"></span></h6>
+          <h6>Ориентировочный срок выполнения: <span id="deadline"></span></h6>
+          <h6>id: <span id="taskid"></span></h6>
+        </article>
+      </details>
+      <section class="container">
+        <details>
+          <summary role="button">Добавить новую задачу</summary>
+          <form>
+            <div class="grid">
+              <label for="name">
+                Имя
+                <input id="name" type="text" value="Имя" readonly />
+              </label>
+              <label for="lastname">
+                Фамилия
+                <input id="lastname" type="text" value="Фамилия" readonly />
+              </label>
+            </div>
+            <label for="description">
+              Краткое описание задачи (макс. 20 символов)
+              <input id="description" type="text" maxlength="20" required />
+            </label>
+            <figure>
+              <label for="comments">
+                Комментарии
+                <textarea id="comments" cols="30" rows="5"></textarea>
+              </label>
+            </figure>
+            <button type="submit" class="contrast">Добавить</button>
+          </form>
+        </details>
+      </section>
+    </header>
+  </body>
+</html>

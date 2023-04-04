@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="static/css/pico.min.css" />
+  </head>
+
+  <body>
+    <nav class="container-fluid">
+      <ul>
+        <li>
+          <a href="./" class="contrast"><strong>PBN</strong></a>
+        </li>
+      </ul>
+      {% include "popup.html" %}
+    </nav>
+    <main class="container">
+      <article class="grid">
+        <div>
+          <hgroup>
+            <h1>Вход</h1>
+            <h2>Войти в существующий аккаунт</h2>
+          </hgroup>
+          <form action="" method="post">
+            {{ form.hidden_tag() }}
+            <label for="login"
+              >Логин
+              <!-- <input -->
+                <!-- type="text" -->
+                <!-- id="login" -->
+                <!-- name="login" -->
+                <!-- placeholder="Логин" -->
+                <!-- required -->
+              <!-- /> -->
+              {{ form.login(size=32, placeholder="Логин") }}
+              {% for error in form.login.errors %}
+                <span style="color: red;">{{ error }}</span>
+              {% endfor %}
+            </label>
+            <label for="password"
+              >Пароль
+              <!-- <input -->
+                <!-- type="password" -->
+                <!-- id="password" -->
+                <!-- name="password" -->
+                <!-- placeholder="Пароль" -->
+                <!-- aria-label="Password" -->
+                <!-- autocomplete="current-password" -->
+                <!-- required -->
+              <!-- /> -->
+              {{ form.password(size=32, placeholder="Пароль") }}
+            </label>
+            <p>
+              Еще нет аккаунта?
+              <a class="secondary" href=" {{ url_for('signup') }} "
+                >Регистрация</a
+              >
+            </p>
+            <p> {{ form.submit(style = 'background-color: black') | safe }} </p>
+            </div>
+          </form>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>

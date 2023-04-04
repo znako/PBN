@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="static/css/pico.min.css" />
+    <title>dev - PBN</title>
+  </head>
+
+  <body>
+    <nav class="container-fluid">
+      <ul>
+        <li>
+          <a href="./" class="contrast"><strong>PBN</strong></a>
+        </li>
+      </ul>
+      {% include "popup.html" %}
+    </nav>
+    <header class="container-fluid">
+      <details>
+        <summary>Текущие задачи</summary>
+        {% include "active.html" %}
+      </details>
+      <details>
+        <summary>Архивные задачи</summary>
+        {% include "archived.html" %}
+      </details>
+    </header>
+  </body>
+</html>

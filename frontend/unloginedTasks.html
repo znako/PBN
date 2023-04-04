@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="picoCSS/css/pico.min.css" />
+    <link rel="stylesheet" href="./static/custom.css" />
+    <title>dev - PBN</title>
+  </head>
+
+  <body>
+    <nav class="container-fluid">
+      <ul>
+        <li>
+          <a href="./" class="contrast"><strong>PBN</strong></a>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <details role="list" dir="rtl">
+            <summary aria-haspopup="listbox" role="link" class="contrast">
+              &#9776;
+            </summary>
+            <ul role="listbox">
+              <!-- <li><a href="link to the site">button name</a></li> -->
+              <li><a href="./">Главная страница</a></li>
+              <li><a href="./unloginedTasks.html">Задачи</a></li>
+              <li><a href="./signup.html">Регистрация</a></li>
+              <li><a href="./login.html">Вход</a></li>
+            </ul>
+          </details>
+        </li>
+      </ul>
+    </nav>
+    <header class="container-fluid">
+      <details>
+        <summary>Текущие задачи</summary>
+        <article>
+          <h3>*Краткое описание задачи*</h3>
+          <h6>Статус: <span id="status"></span></h6>
+          <h6>Исполнитель: <span id="executor"></span></h6>
+          <h6>Ориентировочный срок выполнения: <span id="deadline"></span></h6>
+          <h6>id: <span id="taskid"></span></h6>
+        </article>
+      </details>
+      <details>
+        <summary>Архивные задачи</summary>
+        <article>
+          <h3>*Краткое описание задачи*</h3>
+          <h6>Статус: <span id="status"></span></h6>
+          <h6>Исполнитель: <span id="executor"></span></h6>
+          <h6>Ориентировочный срок выполнения: <span id="deadline"></span></h6>
+          <h6>id: <span id="taskid"></span></h6>
+        </article>
+      </details>
+    </header>
+  </body>
+</html>

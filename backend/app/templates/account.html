@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="static/css/pico.min.css" />
+    <title>dev - PBN</title>
+  </head>
+  <body>
+    <nav class="container-fluid">
+      <ul>
+        <li>
+          <a href="./" class="contrast"><strong>PBN</strong></a>
+        </li>
+      </ul>
+      {% include "popup.html" %}
+    </nav>
+    <article>
+      <h1 style="margin-bottom: 1rem">
+        <kbd>
+        {% if current_user.lastname %}
+          {% if current_user.firstname %}
+          <span id="lastname"> {{ current_user.lastname }} </span> <span id="name"> {{ current_user.firstname }} </span>
+          {% endif %}
+        {% endif %}
+        </kbd>
+      </h1>
+      <small>
+        Email:
+        {% if current_user.email %}
+          <u>
+            <span id="email">
+              {{ current_user.email }}
+            </span>
+          </u>
+        {% endif %}
+        login:
+        {% if current_user.login %}
+          <u><span id="login">
+            {{ current_user.login }}
+          </span></u>
+        {% endif %}
+      </small>
+      {% if current_user.get_accountype() %}
+      <p>
+          <u><span id="accountType">*{{ current_user.get_accountype() }}*</span></u>
+      </p>
+      {% endif %}
+    </article>
+    {% if not current_user.is_moderator() %}
+    <header class="container-fluid">
+      <details>
+        <summary>Текущие задачи</summary>
+        {% if tasks %}
+          {% for task in tasks %}
+            {% if task.description %}
+              {% if task.status %}
+                {% if task.id %}
+                  <article>
+                    <form action="" method="post" novalidate>
+                      {{ editTaskForm.csrf_token }}
+                      <h3>
+                        <span id="span__description"> {{task.description}} </span>
+                      </h3>
+                      <h6>
+                          {% if task.status %}
+                            Статус: <span id="span__status"> {{ task.status }} </span>
+                          {% endif %}
+                          {% if editTaskForm.status %}
+                            {{ editTaskForm.status }}
+                          {% endif %}
+                      </h6>
+                      <h6>
+                        {% if task.deadline %}
+                          Ориентировочный срок выполнения: <span id="span__deadline"> {{task.deadline}} </span>
+                        {% else %}
+                          Ориентировочный срок выполнения: <span id="span__deadline"> Не установлен </span>
+                        {% endif %}
+                        {% if editTaskForm.deadline %}
+                          {{ editTaskForm.deadline(size=32, placeholder="Ориентировочный срок выполнения") }}
+                        {% endif %}
+                      </h6>
+                        <h6>Id задачи: <span id="span__taskid"> {{task.id}} </span></h6>
+                        <input id="lastname" name="lastname" type="hidden" value="{{ task.id }}"/>
+                      <p> {{ editTaskForm.submit }} </p>
+                    </form>
+                    </article>
+                {% endif %}
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      </details>
+      <details>
+        <summary>Архивные задачи</summary>
+          {% include "archived.html" %}
+      </details>
+      {% if current_user.is_consumer() %}
+      <section class="container">
+        {% include "addTask.html" %}
+      {% endif %}
+      </section>
+    </header>
+    {% endif %}
+  </body>
+</html>

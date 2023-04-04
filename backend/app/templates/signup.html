@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="static/css/pico.min.css" />
+  </head>
+
+  <body>
+    <nav class="container-fluid">
+      <ul>
+        <li>
+          <a href="./" class="contrast"><strong>PBN</strong></a>
+        </li>
+      </ul>
+      {% include "popup.html" %}
+    </nav>
+    <main class="container">
+      <article class="grid">
+        <div>
+          <hgroup>
+            <h1>Регистрация</h1>
+            <h2>Создание нового аккаунта</h2>
+          </hgroup>
+          <form action=" {{ url_for('signup') }} " method="post">
+            {{ form.hidden_tag() }}
+            <div class="grid">
+              <label for="firstname"
+                >Имя
+                <!-- <input -->
+                  <!-- type="text" -->
+                  <!-- id="firstname" -->
+                  <!-- name="firstname" -->
+                  <!-- placeholder="Имя" -->
+                  <!-- aria-label="Login" -->
+                  <!-- autocomplete="nickname" -->
+                  <!-- required -->
+                <!-- /> -->
+                {{ form.firstname(size=32, placeholder="Имя") }}
+              </label>
+              <label for="lastname"
+                >Фамилия
+                <!-- <input -->
+                  <!-- type="text" -->
+                  <!-- id="lastname" -->
+                  <!-- name="lastname" -->
+                  <!-- placeholder="Фамилия" -->
+                  <!-- aria-label="Login" -->
+                  <!-- autocomplete="nickname" -->
+                  <!-- required -->
+                <!-- /> -->
+                {{ form.lastname(size=32, placeholder="Фамилия") }}
+              </label>
+            </div>
+            <div class="grid">
+              <label for="login"
+                >Логин
+                <!-- <input -->
+                  <!-- type="text" -->
+                  <!-- id="login" -->
+                  <!-- name="login" -->
+                  <!-- placeholder="Логин" -->
+                  <!-- required -->
+                <!-- /> -->
+                {{ form.login(size=32, placeholder="Логин") }}
+                {% for error in form.login.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                {% endfor %}
+              </label>
+              <label for="email"
+                >Email
+                <!-- <input -->
+                  <!-- type="email" -->
+                  <!-- id="email" -->
+                  <!-- name="email" -->
+                  <!-- placeholder="Email" -->
+                  <!-- required -->
+                <!-- /> -->
+                {{ form.email(size=32, placeholder="Email") }}
+                {% for error in form.email.errors %}
+                <span style="color: red;">{{ error }}</span>
+                {% endfor %}
+            </label>
+            </div>
+            <div class="grid">
+              <label for="password"
+                >Пароль
+                <!-- <input -->
+                  <!-- type="password" -->
+                  <!-- id="password" -->
+                  <!-- name="password" -->
+                  <!-- placeholder="Пароль" -->
+                  <!-- aria-label="Password" -->
+                  <!-- autocomplete="current-password" -->
+                  <!-- required -->
+                <!-- /> -->
+                {{ form.password(size=32, placeholder="Пароль") }}
+              </label>
+              <label for="confirmPassword"
+                  >Повторить пароль
+                <!-- <input
+                  type="password"
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  placeholder="Подтверждение"
+                  aria-label="Password"
+                  autocomplete="current-password"
+                  required
+                /> -->
+                {{ form.confirmPassword(size=32, placeholder="Повторить пароль") }}
+                {% for error in form.confirmPassword.errors %}
+                  <span style="color: red;">{{ error }}</span>
+                {% endfor %}
+              </label>
+            </div>
+            <label for="accountType">Выберите тип аккаунта</label>
+            <!-- <select id="accountType" required name="accountType"> -->
+              <!-- <option>Заказчик</option> -->
+              <!-- <option>Исполнитель</option> -->
+              <!-- <option>Модератор</option> -->
+            <!-- </select> -->
+            {{ form.accountype }}
+            <p>
+              Уже есть аккаунт?
+              <a class="secondary" href=" {{ url_for('login') }} ">Вход</a>
+            </p>
+            <p>
+              Забыли пароль?
+              <a class="secondary" href=" {{ url_for('recovery') }} "
+                >Восстановить аккаунт</a
+              >
+            </p>
+            <div class="grid">
+              <!-- <button type="submit" class="contrast">Зарегистрироваться</button> -->
+              {{ form.submit(style = 'background-color: black') }}
+            </div>
+          </form>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>

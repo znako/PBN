@@ -1,0 +1,31 @@
+<details>
+    <summary role="button">Добавить новую задачу</summary>
+    <form action="" method="post">
+      {{ taskForm.csrf_token }}
+      <div class="grid">
+        <label for="name">
+          Имя
+          {%if current_user.firstname %}
+            <input id="name" name="firstname" type="text" value="{{current_user.firstname}}" readonly />
+          {% endif %}
+        </label>
+        <label for="lastname">
+          Фамилия
+          {% if current_user.lastname %}
+            <input id="lastName" name="lastName" type="text" value="{{current_user.lastname}}" readonly />
+          {% endif %}
+        </label>
+      </div>
+      <label for="description">
+        Краткое описание задачи (макс. 20 символов)
+        {{ taskForm.description(size=20, placeholder="Краткое описание") }}
+      </label>
+      <figure>
+        <label for="comments">
+          Комментарии
+          {{ taskForm.comments(size=256, placeholder="Комментарии") }}
+        </label>
+      </figure>
+      <p> {{ taskForm.submit(style = 'background-color: black') }} </p>
+    </form>
+  </details>

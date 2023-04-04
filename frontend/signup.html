@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="picoCSS/css/pico.min.css" />
+    <link rel="stylesheet" href="./static/custom.css" />
+  </head>
+
+  <body>
+    <main class="container">
+      <article class="grid">
+        <div>
+          <hgroup>
+            <h1>Регистрация</h1>
+            <h2>Создание нового аккаунта</h2>
+          </hgroup>
+          <form>
+            <div class="grid">
+              <label for="firstname"
+                >Имя
+                <input
+                  type="text"
+                  id="firstname"
+                  name="login"
+                  placeholder="Имя"
+                  aria-label="Login"
+                  autocomplete="nickname"
+                  required
+                />
+              </label>
+              <label for="lastname"
+                >Фамилия
+                <input
+                  type="text"
+                  id="lastname"
+                  name="login"
+                  placeholder="Фамилия"
+                  aria-label="Login"
+                  autocomplete="nickname"
+                  required
+                />
+              </label>
+            </div>
+            <div class="grid">
+              <label for="login"
+                >Логин
+                <input
+                  type="text"
+                  id="login"
+                  name="login"
+                  placeholder="Логин"
+                  required
+                />
+              </label>
+              <label for="email"
+                >Email
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="email"
+                  required
+                />
+              </label>
+            </div>
+            <div class="grid">
+              <label for="password"
+                >Пароль
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  placeholder="Пароль"
+                  aria-label="Password"
+                  autocomplete="current-password"
+                  required
+                />
+              </label>
+              <label for="confirmPassword"
+                >Повторить пароль
+                <input
+                  type="password"
+                  id="confirmPassword"
+                  name="password"
+                  placeholder="Подтверждение"
+                  aria-label="Password"
+                  autocomplete="current-password"
+                  required
+                />
+              </label>
+            </div>
+            <label for="accountType">Выберите тип аккаунта</label>
+            <select id="accountType" required>
+              <option>Заказчик</option>
+              <option>Исполнитель</option>
+              <option>Модератор</option>
+            </select>
+            <p>
+              Уже есть аккаунт?
+              <a class="secondary" href="/login.html">Вход</a>
+            </p>
+            <p>
+              Забыли пароль?
+              <a class="secondary" href="/recovery.html"
+                >Восстановить аккаунт</a
+              >
+            </p>
+            <button type="submit" class="contrast">Зарегистрироваться</button>
+          </form>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>

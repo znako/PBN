@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="static/css/pico.min.css" />
+    <title>dev - PBN</title>
+  </head>
+
+  <body>
+    <nav class="container-fluid">
+      <ul>
+        <li>
+          <a href="./" class="contrast"><strong>PBN</strong></a>
+        </li>
+      </ul>
+      {% include "popup.html" %}
+    </nav>
+    <header class="container-fluid">
+      <details>
+        <summary>Текущие задачи</summary>
+        {% if tasks %}
+          {% for task in tasks %}
+            {% if task.description %}
+              {% if task.status %}
+                {% if task.id %}
+                  <article>
+                    <form action="" method="post" novalidate>
+                      {{ deleteForm.csrf_token }}
+                      {{ deleteForm.hidden_tag() }}
+                      <h3>
+                        <span id="span__description"> {{task.description}} </span>
+                      </h3>
+                      <h6>
+                        {% if task.status %}
+                          Статус: <span id="span__status"> {{ task.status }} </span>
+                        {% endif %}
+                      </h6>
+                      <h6>
+                        {% if task.deadline %}
+                          Ориентировочный срок выполнения: <span id="span__deadline"> {{task.deadline}} </span>
+                        {% else %}
+                          Ориентировочный срок выполнения: <span id="span__deadline"> Не установлен </span>
+                        {% endif %}
+                      </h6>
+                      <h6>
+                        {% if task.executor_login %}
+                        Исполнитель: <span id="span__executor"> {{ task.executor_login }} </span>
+                        {% else %}
+                          Исполнитель: <span id="span__executor"> Не назначен </span>
+                        {% endif %}
+                      </h6>
+                        <h6>Id задачи: <span id="span__taskid"> {{task.id}} </span></h6>
+                        <input id="tid" name="tid" type="hidden" value="{{ task.id }}"/>
+                        {{ deleteForm.submit(style = 'background-color: black') }} </p>
+                    </form>
+                  </article>
+                {% endif %}
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      </details>
+      <details>
+        <summary>Архивные задачи</summary>
+        {% include "archived.html" %}
+      </details>
+    </header>
+  </body>
+</html>

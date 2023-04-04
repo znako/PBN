@@ -1,0 +1,33 @@
+{% if current_user.is_authenticated %}
+  <ul>
+    <li>
+      <details role="list" dir="rtl">
+        <summary aria-haspopup="listbox" role="link" class="contrast">
+          &#9776;
+        </summary>
+        <ul role="listbox">
+          <li><a href=" {{ url_for('index') }} ">Главная страница</a></li>
+          <li><a href=" {{ url_for('loginedTasks') }}">Задачи</a></li>
+          <li><a href="{{ url_for('account') }} ">Личный кабинет</a></li>
+          <li><a href="{{ url_for('logout') }} ">Выйти</a></li>
+        </ul>
+      </details>
+    </li>
+  </ul>
+{% else %}
+  <ul>
+    <li>
+      <details role="list" dir="rtl">
+        <summary aria-haspopup="listbox" role="link" class="contrast">
+          &#9776;
+        </summary>
+        <ul role="listbox">
+          <li><a href=" {{ url_for('index') }} ">Главная страница</a></li>
+          <li><a href=" {{ url_for('unloginedTasks') }} ">Задачи</a></li>
+          <li><a href=" {{ url_for('signup') }} ">Регистрация</a></li>
+          <li><a href=" {{ url_for('login') }} ">Вход</a></li>
+        </ul>
+      </details>
+    </li>
+  </ul>
+{% endif %}

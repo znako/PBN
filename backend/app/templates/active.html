@@ -1,0 +1,19 @@
+{% for task in tasks %}
+<article>
+    {% if task.description %}
+    <h3> {{task.description}} </h3>
+    {% endif %}
+    {% if task.status %}
+    <h6>Статус: <span id="status"> {{ task.status }} </span></h6>
+    {% endif %}
+    {% if task.executor_login %}
+    <h6>Исполнитель: <span id="executor"> {{ task.executor_login }} </span></h6>
+    {% endif %}
+    {% if task.deadline %}
+    <h6>Ориентировочный срок выполнения: <span id="deadline"> {{ task.deadline }} </span></h6>
+    {% endif %}
+    {% if task.id %}
+    <h6>id: <span id="taskid"> {{ task.id }} </span></h6>
+    {% endif %}
+</article>
+{% endfor %}
